@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="" %>
+<!doctype html>
+<html lang="en">
+<jsp:include page="common/head.jsp"/>
 <h1>
 	Hello world!  
 </h1>
