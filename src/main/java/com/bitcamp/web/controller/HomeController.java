@@ -18,19 +18,28 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
+		logger.info("Welcome home! The client locale is {}.", locale);		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy 년 MM 월 dd 일 hh 시 mm 분");
 		Date date = new Date();
 		String formattedDate = sdf.format(date);
-		model.addAttribute("serverTime", formattedDate );
-		
+		model.addAttribute("serverTime", formattedDate );		
 		return "home";
 	}
-	@RequestMapping(value = "/login_form", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String loginForm() {
-		logger.info("HomeController: loginForm() ENTER");
-		return "member/login";
+		logger.info("===Home-C: loginForm() IN===");
+		return "common/main";
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+

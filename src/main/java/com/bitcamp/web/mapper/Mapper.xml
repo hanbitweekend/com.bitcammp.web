@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitcamp.web.mapper.Mapper">
+<select id="selectMember" 
+	parameterType="com.bitcamp.web.domain.Member" 
+	resultType="com.bitcamp.web.domain.Member">
+  SELECT * FROM MEMBER WHERE ID LIKE #{id}
+</select>
+<select id="selectMembers" 
+	resultType="com.bitcamp.web.domain.Member">
+  SELECT * FROM MEMBER
+</select>
+<select id="selectMemberByName" 
+	parameterType="com.bitcamp.web.domain.Member" 
+	resultType="com.bitcamp.web.domain.Member">
+  SELECT * FROM MEMBER WHERE name LIKE '%${name}%'
+</select>
+<select id="countMembers" 
+	resultType="int">
+  SELECT COUNT(*) FROM MEMBER
+</select>
+<insert id="insertMember" parameterType="com.bitcamp.web.domain.Member">
+  INSERT INTO MEMBER (id,pass,name,email,regdate)
+  VALUES (#{id},#{pass},#{name},#{email},sysdate)
+</insert>
+
+<update id="updateMember" parameterType="com.bitcamp.web.domain.Member">
+  UPDATE MEMBER SET
+    pass = #{pass},
+    email = #{email}
+  WHERE id LIKE #{id}
+</update>
+
+<delete id="deleteMember"  parameterType="com.bitcamp.web.domain.Member">
+  DELETE FROM MEMBER WHERE id LIKE #{id}
+</delete>
+<select id="selectArticle" 
+	parameterType="com.bitcamp.web.domain.Board" 
+	resultType="com.bitcamp.web.domain.Board">
+  SELECT * FROM Board WHERE seq LIKE #{seq}
+</select>
+<select id="selectArticles" 
+	resultType="com.bitcamp.web.domain.Board">
+  SELECT * FROM Board
+</select>
+<select id="selectArticleByTitle" 
+	parameterType="com.bitcamp.web.domain.Board" 
+	resultType="com.bitcamp.web.domain.Board">
+  SELECT * FROM Board WHERE title LIKE '%${title}%'
+</select>
+<select id="countArticles" 
+	parameterType="com.bitcamp.web.domain.Board" 
+	resultType="com.bitcamp.web.domain.Board">
+  SELECT COUNT(*) FROM Board
+</select>
+<insert id="insertArticle" parameterType="com.bitcamp.web.domain.Board">
+  INSERT INTO Board (seq,title,content,regdate,id)
+  VALUES (seq.NEXTVAL,#{title},#{content},SYSDATE,#{id})
+</insert>
+
+<update id="updateArticle" parameterType="com.bitcamp.web.domain.Board">
+  UPDATE Board SET
+    title = #{title},
+    content = #{content}
+  WHERE seq LIKE #{seq}
+</update>
+
+<delete id="deleteArticle"  parameterType="com.bitcamp.web.domain.Board">
+  DELETE FROM Board WHERE id LIKE #{id}
+</delete>
+</mapper>

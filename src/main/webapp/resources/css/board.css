@@ -18,3 +18,15 @@
 #board_table tr:nth-child(even) {
     background-color: #dddddd;
 }
+#wrapper{width: 100%;height: 700px}
+#container{width: 80%;margin: 0 auto;height: 100%;border:1px solid gray}
+#content{width:80%;margin: 0 auto;height: 80%;border: 1px solid red }
+
+
+
+
+
+
+
+
+
