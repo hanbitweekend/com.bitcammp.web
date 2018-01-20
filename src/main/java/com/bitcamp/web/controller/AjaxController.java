@@ -20,6 +20,9 @@ public class AjaxController {
 		logger.info("===Ajax-C: login() IN===");
 		logger.info("ID :"+member.getId());
 		logger.info("PASS :"+member.getPass());
+	//	GetService g = (Object o) -> {return mapper.selectMember(member);};
+	//	Member m = (Member) g.get(member);
+		
 		return (Member)new GetService() {
 			
 			@Override

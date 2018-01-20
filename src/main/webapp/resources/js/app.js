@@ -34,8 +34,17 @@ app.login_page=(()=>{
 						pass : $('#password').val()
 					}),
 					contentType : 'application/json',
-					success : data =>{
-						alert('success'+data.id);
+					success : d =>{
+						alert('ID:'+d.id+',ID2:'+$('#userid').val());
+						alert('PASS:'+d.pass+',PASS2:'+$('#password').val());
+						
+						if(d.id === $('#userid').val() &&
+								d.pass === $('#password').val()){
+							alert("SUCCESS");
+						}else{
+							alert("FAIL");
+						}
+						
 					},
 					error : (x,s,m)=>{
 						alert('오류발생: '+m);

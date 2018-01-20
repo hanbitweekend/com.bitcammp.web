@@ -50,17 +50,23 @@
 	resultType="com.bitcamp.web.domain.Board">
   SELECT * FROM Board WHERE title LIKE '%${title}%'
 </select>
-<select id="countArticles" 
-	parameterType="com.bitcamp.web.domain.Board" 
-	resultType="com.bitcamp.web.domain.Board">
+<select id="countArticles"
+	resultType="string">
   SELECT COUNT(*) FROM Board
 </select>
 <insert id="insertArticle" parameterType="com.bitcamp.web.domain.Board">
-  INSERT INTO Board (seq,title,content,regdate,id)
-  VALUES (seq.NEXTVAL,#{title},#{content},SYSDATE,#{id})
+		INSERT INTO Board (seq,title,content,regdate,id)
+  			VALUES (seq.NEXTVAL,#{title},#{content},SYSDATE,#{id})
+ 		<selectKey keyProperty="seq" order="AFTER" resultType="int">
+			SELECT SEQ.CURRVAL AS seq FROM dual
+		</selectKey>
+		 
 </insert>
 
 <update id="updateArticle" parameterType="com.bitcamp.web.domain.Board">
+  <selectKey keyProperty="seq" order="BEFORE" resultType="int">
+			SELECT SEQ.CURRVAL AS seq FROM dual
+		</selectKey>
   UPDATE Board SET
     title = #{title},
     content = #{content}
@@ -68,6 +74,6 @@
 </update>
 
 <delete id="deleteArticle"  parameterType="com.bitcamp.web.domain.Board">
-  DELETE FROM Board WHERE id LIKE #{id}
+  DELETE FROM Board WHERE seq LIKE #{seq}
 </delete>
 </mapper>

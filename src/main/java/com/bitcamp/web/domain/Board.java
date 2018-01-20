@@ -4,13 +4,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Board {
-	private String seq,title,content,regdate,id;
+	private int seq;
+	private String title,content,regdate,id;
 
-	public String getSeq() {
+	
+
+	public int getSeq() {
 		return seq;
 	}
 
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 

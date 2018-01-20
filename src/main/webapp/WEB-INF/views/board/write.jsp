@@ -5,7 +5,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well well-sm">
-				<form class="form-horizontal" method="post">
+				<form action="${pageContext.request.contextPath}/board/write" 
+				class="form-horizontal" method="post">
 					<fieldset>
 						<legend id="legend" class="text-center header"> 게시글쓰기</legend>
 						<div class="form-group">
@@ -34,13 +35,13 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-12 text-center">
-								<button id="confirmBtn" type="submit" style="width: 200px"
+								<button id="confirm-btn" type="submit" style="width: 200px"
 									class="btn btn-primary btn-lg">확 인</button>
 								<button id="cancelBtn" type="reset" style="width: 200px"
 									class="btn btn-danger btn-lg">취 소</button>
 								<button id="fileBtn" type="submit" style="width: 200px"
 									class="btn btn-warning btn-lg">파일추가</button>
-								<button id="cancelBtn" type="reset" style="width: 200px"
+								<button id="list-btn" type="reset" style="width: 200px"
 									class="btn btn-success btn-lg">목 록</button>
 								
 							</div>
@@ -62,7 +63,7 @@
 				<h3 class="modal-title" id="modalLabel">정말 삭제하시겠습니까?</h3>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form action="">
 					<div class="form-group">
 						<label for="inputPass">Password</label> <input type="password"
 							class="form-control" id="user-email2"
@@ -76,3 +77,11 @@
 	</div>
 </div>
 <jsp:include page="../common/footer.jsp" />
+<script>
+$('#confirm-btn').click(function(){
+	location.href = "${pageContext.request.contextPath}/move/board/detail";
+});
+$('#list-btn').click(function(){
+	location.href = "${pageContext.request.contextPath}/move/board/list";
+});
+</script>
